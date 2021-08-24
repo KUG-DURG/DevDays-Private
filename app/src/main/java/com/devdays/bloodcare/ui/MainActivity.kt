@@ -1,7 +1,8 @@
-package com.devdays.bloodcare
+package com.devdays.bloodcare.ui
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import com.devdays.bloodcare.R
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
