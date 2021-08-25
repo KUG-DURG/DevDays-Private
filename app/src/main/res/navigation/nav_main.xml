@@ -16,4 +16,8 @@
         android:id="@+id/profileFragment"
         android:name="com.devdays.bloodcare.ui.profile.ProfileFragment"
         android:label="@string/text_label_profile" />
+    <fragment
+        android:id="@+id/signInFragment"
+        android:name="com.devdays.bloodcare.ui.signin.SignInFragment"
+        android:label="SignInFragment" />
 </navigation>

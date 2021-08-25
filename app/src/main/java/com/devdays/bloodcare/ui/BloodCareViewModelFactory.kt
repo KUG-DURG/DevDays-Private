@@ -5,6 +5,7 @@ import androidx.lifecycle.ViewModelProvider
 import com.devdays.bloodcare.ui.find.FindViewModel
 import com.devdays.bloodcare.ui.home.HomeViewModel
 import com.devdays.bloodcare.ui.profile.ProfileViewModel
+import com.devdays.bloodcare.ui.signin.SignInViewModel
 
 @Suppress("UNCHECKED_CAST")
 class BloodCareViewModelFactory : ViewModelProvider.NewInstanceFactory() {
@@ -15,6 +16,7 @@ class BloodCareViewModelFactory : ViewModelProvider.NewInstanceFactory() {
                 isAssignableFrom(HomeViewModel::class.java) -> HomeViewModel()
                 isAssignableFrom(FindViewModel::class.java) -> FindViewModel()
                 isAssignableFrom(ProfileViewModel::class.java) -> ProfileViewModel()
+                isAssignableFrom(SignInViewModel::class.java) -> SignInViewModel()
                 else -> {
                     throw IllegalArgumentException("Unknown ViewModel Class: ${modelClass.name}")
                 }
