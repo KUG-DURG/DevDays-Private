@@ -12,4 +12,8 @@
         android:id="@+id/findFragment"
         android:name="com.devdays.bloodcare.ui.find.FindFragment"
         android:label="@string/text_label_find" />
+    <fragment
+        android:id="@+id/profileFragment"
+        android:name="com.devdays.bloodcare.ui.profile.ProfileFragment"
+        android:label="@string/text_label_profile" />
 </navigation>
