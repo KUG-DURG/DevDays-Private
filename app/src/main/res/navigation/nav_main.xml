@@ -8,4 +8,8 @@
         android:id="@+id/homeFragment"
         android:name="com.devdays.bloodcare.ui.home.HomeFragment"
         android:label="@string/text_label_home" />
+    <fragment
+        android:id="@+id/findFragment"
+        android:name="com.devdays.bloodcare.ui.find.FindFragment"
+        android:label="@string/text_label_find" />
 </navigation>
