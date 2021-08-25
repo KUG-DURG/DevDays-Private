@@ -41,8 +41,8 @@ class MainActivity : AppCompatActivity(), NavController.OnDestinationChangedList
         mAppBarConfiguration =
             AppBarConfiguration(
                 setOf(
-                    /*R.id.homeFragment,
-                    R.id.findFragment,
+                    R.id.homeFragment
+                    /*R.id.findFragment,
                     R.id.profileFragment*/
                 )
             ) { true }
@@ -64,13 +64,13 @@ class MainActivity : AppCompatActivity(), NavController.OnDestinationChangedList
         arguments: Bundle?
     ) {
         when (destination.id) {
-            /*R.id.homeFragment,
-            R.id.findFragment,
-            R.id.profileFragment -> {
+            /*R.id.findFragment,
+            R.id.profileFragment*/
+            R.id.homeFragment -> {
                 supportActionBar?.show()
                 mToolbarMain.visibility = View.VISIBLE
                 mBottomNavigationView.visibility = View.VISIBLE
-            }*/
+            }
             else -> {
                 supportActionBar?.hide()
                 mToolbarMain.visibility = View.GONE
