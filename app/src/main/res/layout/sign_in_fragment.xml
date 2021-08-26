@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout>
+<layout xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <data>
 
@@ -8,16 +8,111 @@
             type="com.devdays.bloodcare.ui.signin.SignInViewModel" />
     </data>
 
-    <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:fillViewport="true"
         tools:context=".ui.signin.SignInFragment">
 
-        <TextView
+        <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:text="Hello" />
+            android:layout_height="wrap_content"
+            android:padding="@dimen/material_dimen_mdpi">
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/appCompatImageViewSignInLogo"
+                android:layout_width="@dimen/material_dimen_constraint"
+                android:layout_height="@dimen/material_dimen_constraint"
+                android:src="@drawable/ic_launcher_foreground"
+                app:layout_constraintDimensionRatio="16:9"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/textInputLayoutSignInEmailId"
+                style="@style/AppTheme.TextInputLayout"
+                android:layout_width="@dimen/material_dimen_constraint"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/material_dimen_xhdpi"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/appCompatImageViewSignInLogo">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/textInputEditTextSignInEmailId"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/text_label_email_id"
+                    android:inputType="textEmailAddress"
+                    android:maxLines="1"
+                    android:text="@={signInViewModel.MSignInEmailId}" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/textInputLayoutSignInPassword"
+                style="@style/AppTheme.TextInputLayout"
+                android:layout_width="@dimen/material_dimen_constraint"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/material_dimen_mdpi"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textInputLayoutSignInEmailId">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/textInputEditTextSignInPassword"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/text_label_password"
+                    android:inputType="textPassword"
+                    android:maxLines="1"
+                    android:text="@={signInViewModel.MSignInPassword}" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/materialButtonSignIn"
+                style="@style/AppTheme.Button.Dark"
+                android:layout_width="@dimen/material_dimen_constraint"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/material_dimen_xhdpi"
+                android:layout_marginTop="@dimen/material_dimen_xhdpi"
+                android:layout_marginEnd="@dimen/material_dimen_xhdpi"
+                android:onClick="@{()->signInViewModel.onClickSignIn()}"
+                android:text="@string/text_label_sign_in"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textInputLayoutSignInPassword" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/materialButtonSignInForgotPassword"
+                style="@style/AppTheme.Button.Transparent"
+                android:layout_width="@dimen/material_dimen_constraint"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/material_dimen_xhdpi"
+                android:layout_marginTop="@dimen/material_dimen_ldpi"
+                android:layout_marginEnd="@dimen/material_dimen_xhdpi"
+                android:layout_marginBottom="@dimen/material_dimen_xxxhdpi"
+                android:onClick="@{()->signInViewModel.onClickForgotPassword()}"
+                android:text="@string/text_label_forgot_password"
+                app:layout_constraintBottom_toTopOf="@+id/materialTextViewSignInSignUp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/materialButtonSignIn"
+                app:layout_constraintVertical_bias="0" />
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/materialTextViewSignInSignUp"
+                android:layout_width="@dimen/material_dimen_constraint"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:onClick="@{()->signInViewModel.onClickSignInSignUp()}"
+                android:text="@string/text_label_no_account_yet"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </ScrollView>
 </layout>
