@@ -16,4 +16,13 @@
     <string name="text_error_field_empty">Field cannot be empty</string>
     <string name="text_error_email_id">Invalid Email Id</string>
     <string name="text_error_password">Password cannot be less than 6 digits</string>
+
+    <!--Sign Up-->
+    <string name="text_label_full_name">Full Name</string>
+    <string name="text_label_mobile_number">Mobile Number</string>
+    <string name="text_label_location">Location</string>
+    <string name="text_label_blood_group">Blood Group</string>
+    <string name="text_label_sign_up">Sign Up</string>
+    <string name="text_label_already_have_an_account">Already have an account? Sign In</string>
+    <string name="text_label_invalid_mobile_number">Invalid Mobile Number</string>
 </resources>

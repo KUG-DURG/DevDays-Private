@@ -47,7 +47,7 @@ fun View.showSnackbar(mSnackbarText: String, mTimeLength: Int) {
     }
 }
 
-fun View.setUpSignInSnackbar(
+fun View.setUpSnackbar(
     mLifecycleOwner: LifecycleOwner,
     mSnackbarEvent: LiveData<Event<Int>>,
     mTimeLength: Int

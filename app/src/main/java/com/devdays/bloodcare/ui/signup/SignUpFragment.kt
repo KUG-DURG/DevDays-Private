@@ -7,13 +7,12 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import com.devdays.bloodcare.databinding.SignUpFragmentBinding
+import com.devdays.bloodcare.util.EventObserver
 import com.devdays.bloodcare.util.getViewModelFactory
+import com.devdays.bloodcare.util.setUpSnackbar
+import com.google.android.material.snackbar.Snackbar
 
 class SignUpFragment : Fragment() {
-
-    companion object {
-        fun newInstance() = SignUpFragment()
-    }
 
     private lateinit var mSignUpFragmentBinding: SignUpFragmentBinding
     private val mSignUpViewModel by viewModels<SignUpViewModel> { getViewModelFactory() }
@@ -21,7 +20,7 @@ class SignUpFragment : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         mSignUpFragmentBinding = SignUpFragmentBinding.inflate(layoutInflater, container, false)
             .apply { signUpViewModel = mSignUpViewModel }
         return mSignUpFragmentBinding.root
@@ -30,5 +29,21 @@ class SignUpFragment : Fragment() {
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
         mSignUpFragmentBinding.lifecycleOwner = viewLifecycleOwner
+
+        setUpSignUpSnackbar()
+        setUpSignUpNavigation()
+    }
+
+    private fun setUpSignUpSnackbar() {
+        view?.setUpSnackbar(
+            this@SignUpFragment.viewLifecycleOwner,
+            mSignUpViewModel.mSignUpSnackbarMessage,
+            Snackbar.LENGTH_SHORT
+        )
+    }
+
+    private fun setUpSignUpNavigation() {
+        mSignUpViewModel.mSignUpEvent.observe(viewLifecycleOwner, EventObserver {})
+        mSignUpViewModel.mSignUpSignInEvent.observe(viewLifecycleOwner, EventObserver {})
     }
 }
