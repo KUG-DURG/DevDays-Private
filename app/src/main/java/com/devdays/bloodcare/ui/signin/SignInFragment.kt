@@ -9,6 +9,8 @@ import androidx.fragment.app.viewModels
 import com.devdays.bloodcare.databinding.SignInFragmentBinding
 import com.devdays.bloodcare.util.EventObserver
 import com.devdays.bloodcare.util.getViewModelFactory
+import com.devdays.bloodcare.util.setUpSignInSnackbar
+import com.google.android.material.snackbar.Snackbar
 
 class SignInFragment : Fragment() {
 
@@ -30,7 +32,16 @@ class SignInFragment : Fragment() {
         super.onActivityCreated(savedInstanceState)
         mSignInFragmentBinding.lifecycleOwner = viewLifecycleOwner
 
+        setUpSignInSnackbar()
         setUpSignInNavigation()
+    }
+
+    private fun setUpSignInSnackbar() {
+        view?.setUpSignInSnackbar(
+            this@SignInFragment.viewLifecycleOwner,
+            mSignInViewModel.mSignInSnackbarMessage,
+            Snackbar.LENGTH_SHORT
+        )
     }
 
     private fun setUpSignInNavigation() {
