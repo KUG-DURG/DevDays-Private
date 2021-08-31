@@ -7,13 +7,12 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import com.devdays.bloodcare.databinding.ForgotPasswordFragmentBinding
+import com.devdays.bloodcare.util.EventObserver
 import com.devdays.bloodcare.util.getViewModelFactory
+import com.devdays.bloodcare.util.setUpSnackbar
+import com.google.android.material.snackbar.Snackbar
 
 class ForgotPasswordFragment : Fragment() {
-
-    companion object {
-        fun newInstance() = ForgotPasswordFragment()
-    }
 
     private lateinit var mForgotPasswordFragmentBinding: ForgotPasswordFragmentBinding
     private val mForgotPasswordViewModel by viewModels<ForgotPasswordViewModel> { getViewModelFactory() }
@@ -21,7 +20,7 @@ class ForgotPasswordFragment : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         mForgotPasswordFragmentBinding =
             ForgotPasswordFragmentBinding.inflate(layoutInflater, container, false)
                 .apply { forgotPasswordViewModel = mForgotPasswordViewModel }
@@ -31,5 +30,22 @@ class ForgotPasswordFragment : Fragment() {
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
         mForgotPasswordFragmentBinding.lifecycleOwner = viewLifecycleOwner
+
+        setUpForgotPasswordSnackbar()
+        setUpForgotPasswordNavigation()
+    }
+
+    private fun setUpForgotPasswordSnackbar() {
+        view?.setUpSnackbar(
+            viewLifecycleOwner,
+            mForgotPasswordViewModel.mForgotPasswordShowSnackbarMessage,
+            Snackbar.LENGTH_SHORT
+        )
+    }
+
+    private fun setUpForgotPasswordNavigation() {
+        mForgotPasswordViewModel.mForgotPasswordSendOTPEvent.observe(
+            viewLifecycleOwner,
+            EventObserver {})
     }
 }
