@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:app="http://schemas.android.com/apk/res-auto">
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
 
     <data>
 
@@ -8,10 +10,10 @@
             type="com.devdays.bloodcare.ui.signin.SignInViewModel" />
     </data>
 
-    <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:tools="http://schemas.android.com/tools"
+    <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:background="@color/white"
         android:fillViewport="true"
         tools:context=".ui.signin.SignInFragment">
 
@@ -85,15 +87,34 @@
                 app:layout_constraintTop_toBottomOf="@+id/textInputLayoutSignInPassword" />
 
             <com.google.android.material.textview.MaterialTextView
-                android:id="@+id/materialTextViewSignInSignUp"
-                spannableString="@{@string/text_label_no_account_yet}"
+                android:id="@+id/materialTextViewSignInSignUpMessage"
                 android:layout_width="@dimen/material_dimen_constraint"
                 android:layout_height="wrap_content"
-                android:gravity="center"
-                android:onClick="@{()->signInViewModel.onClickSignInSignUp()}"
+                android:gravity="end"
+                android:text="@string/text_label_no_account_yet"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/materialTextViewSignInSignUp"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintHorizontal_chainStyle="packed"
+                app:layout_constraintHorizontal_weight="1"
                 app:layout_constraintStart_toStartOf="parent" />
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/materialTextViewSignInSignUp"
+                android:layout_width="@dimen/material_dimen_constraint"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/material_dimen_ldpi"
+                android:gravity="start"
+                android:onClick="@{()->signInViewModel.onClickSignInSignUp()}"
+                android:text="@string/text_label_sign_up"
+                android:textColor="@color/redDark"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="@+id/materialTextViewSignInSignUpMessage"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintHorizontal_weight="0.5"
+                app:layout_constraintStart_toEndOf="@+id/materialTextViewSignInSignUpMessage"
+                app:layout_constraintTop_toTopOf="@+id/materialTextViewSignInSignUpMessage" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
