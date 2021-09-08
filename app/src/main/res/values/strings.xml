@@ -28,4 +28,11 @@
 
     <!--Forgot Password-->
     <string name="text_label_send_otp">Send OTP</string>
+    <string name="text_label_relation">Relation</string>
+    <string name="text_label_submit_request">Submit Request</string>
+
+    <string name="text_error_full_name">FullName cannot be empty</string>
+    <string name="text_error_relation">Relation cannot be empty</string>
+    <string name="text_error_blood_group">Blood Group cannot be empty</string>
+    <string name="text_error_location">Location cannot be empty</string>
 </resources>
