@@ -84,29 +84,12 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/textInputLayoutSignInPassword" />
 
-            <com.google.android.material.button.MaterialButton
-                android:id="@+id/materialButtonSignInForgotPassword"
-                style="@style/AppTheme.Button.Transparent"
-                android:layout_width="@dimen/material_dimen_constraint"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/material_dimen_xhdpi"
-                android:layout_marginTop="@dimen/material_dimen_ldpi"
-                android:layout_marginEnd="@dimen/material_dimen_xhdpi"
-                android:layout_marginBottom="@dimen/material_dimen_xxxhdpi"
-                android:onClick="@{()->signInViewModel.onClickForgotPassword()}"
-                android:text="@string/text_label_forgot_password"
-                app:layout_constraintBottom_toTopOf="@+id/materialTextViewSignInSignUp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/materialButtonSignIn"
-                app:layout_constraintVertical_bias="0" />
-
             <com.google.android.material.textview.MaterialTextView
                 android:id="@+id/materialTextViewSignInSignUp"
+                spannableString="@{@string/text_label_no_account_yet}"
                 android:layout_width="@dimen/material_dimen_constraint"
                 android:layout_height="wrap_content"
                 android:gravity="center"
-                spannableString="@{@string/text_label_no_account_yet}"
                 android:onClick="@{()->signInViewModel.onClickSignInSignUp()}"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"

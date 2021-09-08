@@ -41,8 +41,4 @@
         android:id="@+id/signUpFragment"
         android:name="com.devdays.bloodcare.ui.signup.SignUpFragment"
         android:label="SignUpFragment" />
-    <fragment
-        android:id="@+id/forgotPasswordFragment"
-        android:name="com.devdays.bloodcare.ui.forgotpassword.ForgotPasswordFragment"
-        android:label="ForgotPasswordFragment" />
 </navigation>

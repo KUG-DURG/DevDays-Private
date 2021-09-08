@@ -46,7 +46,6 @@ class SignInFragment : Fragment() {
 
     private fun setUpSignInNavigation() {
         mSignInViewModel.mSignInEvent.observe(viewLifecycleOwner, EventObserver {})
-        mSignInViewModel.mSignInForgotPasswordEvent.observe(viewLifecycleOwner, EventObserver {})
         mSignInViewModel.mSignInSignUpEvent.observe(viewLifecycleOwner, EventObserver {})
     }
 }
