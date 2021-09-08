@@ -23,7 +23,7 @@
     <string name="text_label_location">Location</string>
     <string name="text_label_blood_group">Blood Group</string>
     <string name="text_label_sign_up">Sign Up</string>
-    <string name="text_label_already_have_an_account">Already have an account? Sign In</string>
+    <string name="text_label_already_have_an_account">Already have an account?</string>
     <string name="text_label_invalid_mobile_number">Invalid Mobile Number</string>
 
     <!--Forgot Password-->
