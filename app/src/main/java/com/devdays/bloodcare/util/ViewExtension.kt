@@ -65,7 +65,7 @@ fun onSpanString(mTextView: TextView, mData: String) {
 
     if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
         mWordToSpan.setSpan(
-            ForegroundColorSpan(mTextView.context.resources.getColor(R.color.red_3043, null)),
+            ForegroundColorSpan(mTextView.context.resources.getColor(R.color.redDark, null)),
             23,
             30,
             Spannable.SPAN_EXCLUSIVE_EXCLUSIVE
