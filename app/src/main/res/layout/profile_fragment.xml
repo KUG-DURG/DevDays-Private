@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
 
     <data>
 
@@ -8,17 +10,99 @@
             type="com.devdays.bloodcare.ui.profile.ProfileViewModel" />
     </data>
 
-    <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:tools="http://schemas.android.com/tools"
+    <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@color/white"
+        android:fillViewport="true"
         tools:context=".ui.profile.ProfileFragment">
 
-        <TextView
+        <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:text="Hello" />
+            android:layout_height="wrap_content"
+            android:padding="@dimen/material_dimen_mdpi">
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/materialTextViewProfileFullName"
+                style="@style/AppTheme.HeadingSix"
+                android:layout_width="@dimen/material_dimen_constraint"
+                android:layout_height="wrap_content"
+                android:hint="@string/text_label_full_name"
+                android:text="@={profileViewModel.MProfileFullName}"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/materialTextViewProfileEmailId"
+                style="@style/AppTheme.HeadingSix"
+                android:layout_width="@dimen/material_dimen_constraint"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/material_dimen_mdpi"
+                android:hint="@string/text_label_email_id"
+                android:text="@={profileViewModel.MProfileEmailId}"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/materialTextViewProfileFullName" />
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/materialTextViewProfileMobileNumber"
+                style="@style/AppTheme.HeadingSix"
+                android:layout_width="@dimen/material_dimen_constraint"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/material_dimen_mdpi"
+                android:hint="@string/text_label_mobile_number"
+                android:text="@={profileViewModel.MProfileMobileNumber}"
+                app:layout_constraintEnd_toStartOf="@+id/materialTextViewProfilePassword"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/materialTextViewProfileEmailId" />
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/materialTextViewProfilePassword"
+                style="@style/AppTheme.HeadingSix"
+                android:layout_width="@dimen/material_dimen_constraint"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/material_dimen_mdpi"
+                android:hint="@string/text_label_password"
+                android:text="@={profileViewModel.MProfilePassword}"
+                app:layout_constraintBottom_toBottomOf="@+id/materialTextViewProfileMobileNumber"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toEndOf="@+id/materialTextViewProfileMobileNumber"
+                app:layout_constraintTop_toTopOf="@+id/materialTextViewProfileMobileNumber" />
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/materialTextViewProfileLocation"
+                style="@style/AppTheme.HeadingSix"
+                android:layout_width="@dimen/material_dimen_constraint"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/material_dimen_mdpi"
+                android:layout_marginBottom="@dimen/material_dimen_xxxlarge"
+                android:hint="@string/text_label_location"
+                android:text="@={profileViewModel.MProfileLocation}"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/materialTextViewProfileBloodGroup"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/materialTextViewProfileMobileNumber"
+                app:layout_constraintVertical_bias="0" />
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/materialTextViewProfileBloodGroup"
+                style="@style/AppTheme.HeadingSix"
+                android:layout_width="@dimen/material_dimen_constraint"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/material_dimen_mdpi"
+                android:hint="@string/text_label_blood_group"
+                android:text="@={profileViewModel.MProfileBloodGroup}"
+                app:layout_constraintBottom_toBottomOf="@+id/materialTextViewProfileLocation"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toEndOf="@+id/materialTextViewProfileLocation"
+                app:layout_constraintTop_toTopOf="@+id/materialTextViewProfileLocation" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </ScrollView>
 </layout>

@@ -11,10 +11,6 @@ import com.devdays.bloodcare.util.getViewModelFactory
 
 class ProfileFragment : Fragment() {
 
-    companion object {
-        fun newInstance() = ProfileFragment()
-    }
-
     private lateinit var mProfileFragmentBinding: ProfileFragmentBinding
     private val mProfileViewModel by viewModels<ProfileViewModel> { getViewModelFactory() }
 
@@ -27,8 +23,8 @@ class ProfileFragment : Fragment() {
         return mProfileFragmentBinding.root
     }
 
-    override fun onActivityCreated(savedInstanceState: Bundle?) {
-        super.onActivityCreated(savedInstanceState)
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
         mProfileFragmentBinding.lifecycleOwner = viewLifecycleOwner
     }
 }
