@@ -7,6 +7,7 @@ import androidx.appcompat.widget.Toolbar
 import androidx.navigation.NavController
 import androidx.navigation.NavDestination
 import androidx.navigation.findNavController
+import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.navigateUp
 import androidx.navigation.ui.setupActionBarWithNavController
@@ -14,6 +15,7 @@ import androidx.navigation.ui.setupWithNavController
 import com.devdays.bloodcare.R
 import com.devdays.bloodcare.util.SharedPreferenceUtils
 import com.google.android.material.bottomnavigation.BottomNavigationView
+import kotlinx.android.synthetic.main.content_main.*
 
 class MainActivity : AppCompatActivity(), NavController.OnDestinationChangedListener {
 
@@ -23,6 +25,8 @@ class MainActivity : AppCompatActivity(), NavController.OnDestinationChangedList
     private lateinit var mAppBarConfiguration: AppBarConfiguration
 
     private lateinit var mSharedPreferenceUtils: SharedPreferenceUtils
+    private var mLoginToken: Boolean = false
+    private var mDestination: Int = 0
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -35,6 +39,16 @@ class MainActivity : AppCompatActivity(), NavController.OnDestinationChangedList
         mBottomNavigationView = findViewById(R.id.bottomNavigationView)
 
         mSharedPreferenceUtils = SharedPreferenceUtils(this@MainActivity)
+        mLoginToken = mSharedPreferenceUtils.mLoginToken
+
+        mDestination = when {
+            mLoginToken -> {
+                R.id.homeFragment
+            }
+            else -> {
+                R.id.signInFragment
+            }
+        }
 
         mNavControllerMain = findNavController(R.id.fragmentNavHost)
 
@@ -52,6 +66,15 @@ class MainActivity : AppCompatActivity(), NavController.OnDestinationChangedList
         mBottomNavigationView.setupWithNavController(mNavControllerMain)
 
         mNavControllerMain.addOnDestinationChangedListener(this@MainActivity)
+
+        val mNavHostFragment =
+            supportFragmentManager.findFragmentById(R.id.fragmentNavHost) as NavHostFragment
+        val mGraphInflater = mNavHostFragment.navController.navInflater
+        val mNavGraph = mGraphInflater.inflate(R.navigation.nav_main)
+        val mNavController = mNavHostFragment.navController
+
+        mNavGraph.startDestination = mDestination
+        mNavController.graph = mNavGraph
     }
 
     override fun onSupportNavigateUp(): Boolean {
