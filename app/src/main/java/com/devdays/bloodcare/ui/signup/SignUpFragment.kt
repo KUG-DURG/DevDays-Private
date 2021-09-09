@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
 import com.devdays.bloodcare.databinding.SignUpFragmentBinding
 import com.devdays.bloodcare.util.EventObserver
 import com.devdays.bloodcare.util.getViewModelFactory
@@ -44,6 +45,8 @@ class SignUpFragment : Fragment() {
 
     private fun setUpSignUpNavigation() {
         mSignUpViewModel.mSignUpEvent.observe(viewLifecycleOwner, EventObserver {})
-        mSignUpViewModel.mSignUpSignInEvent.observe(viewLifecycleOwner, EventObserver {})
+        mSignUpViewModel.mSignUpSignInEvent.observe(viewLifecycleOwner, EventObserver {
+            findNavController().popBackStack()
+        })
     }
 }
