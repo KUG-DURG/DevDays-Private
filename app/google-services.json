@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "535678917649",
+    "project_id": "blood-care-5524b",
+    "storage_bucket": "blood-care-5524b.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:535678917649:android:24c5e81e2d84bbc9bfe5b0",
+        "android_client_info": {
+          "package_name": "com.devdays.bloodcare"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "535678917649-k4ec1g1ola1ur5ibb3dh6o4rmhlt937t.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC3ix7D6nHmZ8Zh2K5CMM0eh-g44Mlw_PU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "535678917649-k4ec1g1ola1ur5ibb3dh6o4rmhlt937t.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
