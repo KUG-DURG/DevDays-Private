@@ -80,7 +80,7 @@
                 android:layout_marginStart="@dimen/material_dimen_xhdpi"
                 android:layout_marginTop="@dimen/material_dimen_xhdpi"
                 android:layout_marginEnd="@dimen/material_dimen_xhdpi"
-                android:onClick="@{()->signInViewModel.onClickSignIn()}"
+                android:onClick="@{signInViewModel::onClickSignIn}"
                 android:text="@string/text_label_sign_in"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"

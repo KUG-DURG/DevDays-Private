@@ -1,5 +1,6 @@
 package com.devdays.bloodcare.ui.signin
 
+import android.view.View
 import androidx.databinding.ObservableField
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
@@ -24,7 +25,7 @@ class SignInViewModel : ViewModel() {
         _signInSnackbarMessage.value = Event(mMessage)
     }
 
-    fun onClickSignIn() {
+    fun onClickSignIn(mView: View) {
         when {
             mSignInEmailId.get()?.isEmpty() == true -> {
                 showSnackbar(R.string.text_error_field_empty)
@@ -32,7 +33,7 @@ class SignInViewModel : ViewModel() {
             mSignInPassword.get()?.isEmpty() == true -> {
                 showSnackbar(R.string.text_error_field_empty)
             }
-            mSignInPassword.get()?.length!! < 6 -> {
+            mSignInPassword.get()?.length!! <= 6 -> {
                 showSnackbar(R.string.text_error_password)
             }
             else -> {

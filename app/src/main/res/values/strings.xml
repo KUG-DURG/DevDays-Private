@@ -35,4 +35,6 @@
     <string name="text_error_relation">Relation cannot be empty</string>
     <string name="text_error_blood_group">Blood Group cannot be empty</string>
     <string name="text_error_location">Location cannot be empty</string>
+    <string name="text_error_internet">No internet connection</string>
+    <string name="text_error_invalid_credentials">Invalid credentials</string>
 </resources>
