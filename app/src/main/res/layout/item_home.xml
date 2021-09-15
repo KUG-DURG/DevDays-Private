@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="homeViewModel"
+            type="com.devdays.bloodcare.ui.home.HomeViewModel" />
+
+        <variable
+            name="homeModel"
+            type="com.devdays.bloodcare.ui.home.HomeModel" />
+    </data>
+
+    <com.google.android.material.card.MaterialCardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/material_dimen_small_ldpi">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/material_dimen_mdpi">
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/materialTextViewHomeFullName"
+                style="@style/AppTheme.BodyTwo"
+                android:layout_width="@dimen/material_dimen_constraint"
+                android:layout_height="wrap_content"
+                android:hint="@string/text_label_full_name"
+                android:text="@{homeModel.MFullName}"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/materialTextViewHomeMobileNumber"
+                style="@style/AppTheme.BodyTwo"
+                android:layout_width="@dimen/material_dimen_constraint"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/material_dimen_mdpi"
+                android:hint="@string/text_label_mobile_number"
+                android:text="@{homeModel.MMobileNumber}"
+                app:layout_constraintEnd_toStartOf="@+id/materialTextViewHomeLocation"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/materialTextViewHomeFullName" />
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/materialTextViewHomeLocation"
+                style="@style/AppTheme.BodyTwo"
+                android:layout_width="@dimen/material_dimen_constraint"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/material_dimen_mdpi"
+                android:hint="@string/text_label_location"
+                android:text="@{homeModel.MLocation}"
+                app:layout_constraintBottom_toBottomOf="@+id/materialTextViewHomeMobileNumber"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toEndOf="@+id/materialTextViewHomeMobileNumber"
+                app:layout_constraintTop_toTopOf="@+id/materialTextViewHomeMobileNumber" />
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/materialTextViewHomeRelation"
+                style="@style/AppTheme.BodyTwo"
+                android:layout_width="@dimen/material_dimen_constraint"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/material_dimen_mdpi"
+                android:hint="@string/text_label_relation"
+                android:text="@{homeModel.MRelation}"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/materialTextVIewHomeBloodGroup"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/materialTextViewHomeMobileNumber"
+                app:layout_constraintVertical_bias="0" />
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/materialTextVIewHomeBloodGroup"
+                style="@style/AppTheme.BodyTwo"
+                android:layout_width="@dimen/material_dimen_constraint"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/material_dimen_mdpi"
+                android:hint="@string/text_label_blood_group"
+                android:text="@{homeModel.MBloodGroup}"
+                app:layout_constraintBottom_toBottomOf="@+id/materialTextViewHomeRelation"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toEndOf="@+id/materialTextViewHomeRelation"
+                app:layout_constraintTop_toTopOf="@+id/materialTextViewHomeRelation" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </com.google.android.material.card.MaterialCardView>
+</layout>
