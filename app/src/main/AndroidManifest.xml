@@ -3,6 +3,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     package="com.devdays.bloodcare">
 
+    <uses-permission android:name="android.permission.INTERNET" />
+
     <application
         android:name=".ui.BloodCareApplication"
         android:allowBackup="true"

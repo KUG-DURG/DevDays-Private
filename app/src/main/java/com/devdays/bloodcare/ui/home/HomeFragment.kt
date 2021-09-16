@@ -4,10 +4,12 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import com.devdays.bloodcare.databinding.HomeFragmentBinding
 import com.devdays.bloodcare.util.getViewModelFactory
+import com.devdays.bloodcare.util.toast
 
 class HomeFragment : Fragment() {
 
@@ -41,7 +43,13 @@ class HomeFragment : Fragment() {
             mHomeFragmentBinding.recyclerViewHome.adapter =
                 mHomeAdapter
         } else {
-//            Timber.d("ViewModel not initialized when attempting to set up adapter.")
+            context?.let {
+                view?.toast(
+                    it,
+                    "ViewModel not initialized when attempting to set up adapter.",
+                    Toast.LENGTH_SHORT
+                )
+            }
         }
     }
 }
