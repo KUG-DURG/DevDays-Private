@@ -5,10 +5,12 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.activity.OnBackPressedCallback
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import com.devdays.bloodcare.R
 import com.devdays.bloodcare.databinding.HomeFragmentBinding
+import com.devdays.bloodcare.util.AlertDialogUtils
 import com.devdays.bloodcare.util.NetworkUtils
 import com.devdays.bloodcare.util.getViewModelFactory
 import com.devdays.bloodcare.util.toast
@@ -39,6 +41,7 @@ class HomeFragment : Fragment() {
 
         mDatabaseReferenceHome = FirebaseDatabase.getInstance().reference.child("requests")
         setUpHomeAdapter()
+        onBackPress()
     }
 
     private fun setUpHomeAdapter() {
@@ -103,5 +106,31 @@ class HomeFragment : Fragment() {
                 )
             }
         }
+    }
+
+    private fun onBackPress() {
+        val callback: OnBackPressedCallback =
+            object : OnBackPressedCallback(true) {
+                override fun handleOnBackPressed() {
+                    context?.let {
+                        AlertDialogUtils.getInstance().showAlert(
+                            it,
+                            R.drawable.ic_warning,
+                            getString(R.string.text_alert_title_close_app),
+                            getString(R.string.text_alert_message_confirm),
+                            getString(android.R.string.ok),
+                            { dialog, _ ->
+                                activity?.finish()
+                                dialog.dismiss()
+                            },
+                            getString(android.R.string.cancel),
+                            { dialog, _ ->
+                                dialog.dismiss()
+                            }
+                        )
+                    }
+                }
+            }
+        requireActivity().onBackPressedDispatcher.addCallback(viewLifecycleOwner, callback)
     }
 }
