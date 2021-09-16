@@ -60,8 +60,11 @@ class SignInFragment : Fragment() {
                 if (NetworkUtils.isNetworkConnected(it)) {
                     mSignInDatabaseReference.addValueEventListener(object : ValueEventListener {
                         override fun onDataChange(snapshot: DataSnapshot) {
-                            mEmailId = snapshot.child("emailId").value.toString()
-                            mPassword = snapshot.child("password").value.toString()
+
+                            for (mSignInData in snapshot.children) {
+                                mEmailId = mSignInData.child("emailId").value.toString()
+                                mPassword = mSignInData.child("password").value.toString()
+                            }
 
                             mSignInSharedPreferenceUtils = SharedPreferenceUtils(it)
 
