@@ -65,7 +65,7 @@ class SignUpFragment : Fragment() {
                         mSignUpViewModel.mSignUpMobileNumber.get().toString()
                     mHashMapAddSignUp["password"] =
                         mSignUpViewModel.mSignUpPassword.get().toString()
-                    mHashMapAddSignUp["password"] =
+                    mHashMapAddSignUp["location"] =
                         mSignUpViewModel.mSignUpLocation.get().toString()
                     mHashMapAddSignUp["bloodGroup"] =
                         mSignUpViewModel.mSignUpBloodGroup.get().toString()
