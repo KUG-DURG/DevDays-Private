@@ -7,9 +7,12 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import com.devdays.bloodcare.R
 import com.devdays.bloodcare.databinding.HomeFragmentBinding
+import com.devdays.bloodcare.util.NetworkUtils
 import com.devdays.bloodcare.util.getViewModelFactory
 import com.devdays.bloodcare.util.toast
+import com.google.firebase.database.*
 
 class HomeFragment : Fragment() {
 
@@ -18,6 +21,8 @@ class HomeFragment : Fragment() {
 
     private lateinit var mHomeAdapter: HomeAdapter
     private var mHomeModel: ArrayList<HomeModel> = ArrayList()
+
+    private lateinit var mDatabaseReferenceHome: DatabaseReference
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -31,22 +36,69 @@ class HomeFragment : Fragment() {
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
         mHomeFragmentBinding.lifecycleOwner = viewLifecycleOwner
+
+        mDatabaseReferenceHome = FirebaseDatabase.getInstance().reference.child("requests")
         setUpHomeAdapter()
     }
 
     private fun setUpHomeAdapter() {
-        val mViewModel = mHomeFragmentBinding.homeViewModel
+        context?.let {
+            if (NetworkUtils.isNetworkConnected(it)) {
+                mDatabaseReferenceHome.addValueEventListener(object : ValueEventListener {
+                    override fun onDataChange(snapshot: DataSnapshot) {
 
-        if (mViewModel != null) {
-            mHomeAdapter =
-                HomeAdapter(mViewModel, mHomeModel)
-            mHomeFragmentBinding.recyclerViewHome.adapter =
-                mHomeAdapter
-        } else {
-            context?.let {
+                        if (snapshot.value != null) {
+                            mHomeFragmentBinding.recyclerViewHome.visibility = View.VISIBLE
+                            mHomeFragmentBinding.materialtextViewHomeNoDataFound.visibility =
+                                View.GONE
+
+                            mHomeModel.clear()
+                            for (mHomeData in snapshot.children) {
+                                mHomeModel.add(
+                                    HomeModel(
+                                        mHomeData.child("id").value.toString(),
+                                        mHomeData.child("fullName").value.toString(),
+                                        mHomeData.child("mobileNumber").value.toString(),
+                                        mHomeData.child("relation").value.toString(),
+                                        mHomeData.child("bloodGroup").value.toString(),
+                                        mHomeData.child("location").value.toString(),
+                                    )
+                                )
+                            }
+
+                            val mViewModel = mHomeFragmentBinding.homeViewModel
+
+                            if (mViewModel != null) {
+                                mHomeAdapter =
+                                    HomeAdapter(mViewModel, mHomeModel)
+                                mHomeFragmentBinding.recyclerViewHome.adapter =
+                                    mHomeAdapter
+                            } else {
+                                context?.let {
+                                    view?.toast(
+                                        it,
+                                        "ViewModel not initialized when attempting to set up adapter.",
+                                        Toast.LENGTH_SHORT
+                                    )
+                                }
+                            }
+                        } else {
+                            mHomeFragmentBinding.recyclerViewHome.visibility = View.GONE
+                            mHomeFragmentBinding.materialtextViewHomeNoDataFound.visibility =
+                                View.VISIBLE
+                        }
+                    }
+
+                    override fun onCancelled(error: DatabaseError) {
+                        mHomeFragmentBinding.recyclerViewHome.visibility = View.GONE
+                        mHomeFragmentBinding.materialtextViewHomeNoDataFound.visibility =
+                            View.VISIBLE
+                    }
+                })
+            } else {
                 view?.toast(
                     it,
-                    "ViewModel not initialized when attempting to set up adapter.",
+                    getString(R.string.text_error_internet),
                     Toast.LENGTH_SHORT
                 )
             }
