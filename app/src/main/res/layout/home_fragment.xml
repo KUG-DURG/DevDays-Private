@@ -19,6 +19,7 @@
             android:id="@+id/materialtextViewHomeNoDataFound"
             android:layout_width="@dimen/material_dimen_constraint"
             android:layout_height="wrap_content"
+            android:overScrollMode="never"
             android:text="@string/text_label_no_data_found"
             android:textAlignment="center"
             android:textAllCaps="true"
