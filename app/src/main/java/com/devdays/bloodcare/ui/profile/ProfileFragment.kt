@@ -19,13 +19,7 @@ class ProfileFragment : Fragment() {
     private lateinit var mProfileFragmentBinding: ProfileFragmentBinding
     private val mProfileViewModel by viewModels<ProfileViewModel> { getViewModelFactory() }
 
-    private lateinit var mSignInDatabaseReference: DatabaseReference
-    private var mFullName: String? = null
-    private var mEmailId: String? = null
-    private var mMobileNumber: String? = null
-    private var mPassword: String? = null
-    private var mLocation: String? = null
-    private var mBloodGroup: String? = null
+    private lateinit var mProfileDatabaseReference: DatabaseReference
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -40,7 +34,7 @@ class ProfileFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         mProfileFragmentBinding.lifecycleOwner = viewLifecycleOwner
 
-        mSignInDatabaseReference = FirebaseDatabase.getInstance().reference.child("auth")
+        mProfileDatabaseReference = FirebaseDatabase.getInstance().reference.child("auth")
 
         onLoadProfileDataFromFirebase()
     }
@@ -48,7 +42,7 @@ class ProfileFragment : Fragment() {
     private fun onLoadProfileDataFromFirebase() {
         context?.let {
             if (NetworkUtils.isNetworkConnected(it)) {
-                mSignInDatabaseReference.addValueEventListener(object : ValueEventListener {
+                mProfileDatabaseReference.addValueEventListener(object : ValueEventListener {
                     override fun onDataChange(snapshot: DataSnapshot) {
 
                         for (mProfileData in snapshot.children) {
